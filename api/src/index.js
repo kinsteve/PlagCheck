@@ -40,11 +40,14 @@
 import express, { json } from 'express';
 import authRoutes from './routes/authRoutes.js';
 import scanRoutes from './routes/scanRoutes.js';
-import webHookRoute from './routes/webhookRoutes.js';
+import webHookRoutes from './routes/webhookRoutes.js';
+import exportRoutes from './routes/exportRoutes.js';
+// import completionWebhookRoute from './routes/completionWebhookRoutes.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { createServer } from 'http';
 import { Server as socketIO } from 'socket.io';
+
 import ngrok from 'ngrok'; // Import the ngrok package
 dotenv.config();
 
@@ -71,9 +74,10 @@ const startServer = async () => {
   };
   const io = new socketIO(httpServer, options);
 
-  app.use('/copyleaks', webHookRoute(io));
+  app.use('/copyleaks', webHookRoutes(io));
   app.use("/api/v1", authRoutes);
   app.use("/api/v1/scan", scanRoutes);
+  app.use("/api/v1/export" , exportRoutes)
 
 };
 

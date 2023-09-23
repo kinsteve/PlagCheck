@@ -302,163 +302,164 @@
   }
 }
 
-
-@media(max-width: 1601px) {
-  .new-scan-container {
-    align-items: center;
-    justify-content: flex-start;
-    background-color: var(--dl-color-gray-white);
-  }
-  .new-scan-header {
-    width: auto;
-    max-width: auto;
-    min-width: 100%;
-  }
-  .new-scan-text {
-    top: 150px;
-    left: 580px;
-    position: static;
-    font-size: 30px;
-    align-self: center;
-    margin-top: var(--dl-space-space-oneandhalfunits);
-    font-family: Arial;
-    margin-bottom: var(--dl-space-space-oneandhalfunits);
-    letter-spacing: inherit;
-  }
-  .new-scan-container2 {
-    width: 764px;
-    height: 510px;
-    max-width: 100%;
-    min-width: 50%;
-    align-self: center;
-    align-items: center;
-    margin-right: 0px;
-    justify-content: center;
-  }
-  .new-scan-container3 {
-    gap: OneAndHalfUnits;
-    position: relative;
-    align-items: center;
-    border-color: #dadada;
-    border-width: 1px;
-    justify-content: flex-start;
-  }
-  .new-scan-icon10 {
-    top: 1px;
-    left: 0px;
-    right: 0px;
-    width: 66px;
-    height: 124px;
-    margin: auto;
-    position: absolute;
-  }
-  .new-scan-text1 {
-    top: 126px;
-    left: 76px;
-    position: absolute;
-    font-size: 25px;
-    font-style: normal;
-    font-family: Open Sans;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-  .new-scan-container4 {
-    gap: OneAndHalfUnits;
-    position: relative;
-    align-items: center;
-    border-color: #dadada;
-    border-width: 1px;
-    justify-content: flex-start;
-  }
-  .new-scan-icon12 {
-    fill: rgba(141, 157, 181, 0.46);
-    width: 84px;
-    height: 124px;
-  }
-  .new-scan-text2 {
-    font-size: 23px;
-    font-style: normal;
-    font-family: Open Sans;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-  .new-scan-container5 {
-    gap: OneAndHalfUnits;
-    position: relative;
-    align-items: center;
-    border-color: #dadada;
-    border-width: 1px;
-    justify-content: flex-start;
-  }
-  .new-scan-icon14 {
-    fill: rgba(141, 157, 181, 0.46);
-    width: 84px;
-    height: 124px;
-  }
-  .new-scan-text3 {
-    font-size: 25px;
-    font-style: normal;
-    font-family: Open Sans;
-    font-weight: 600;
-  }
-  .new-scan-container6 {
-    gap: OneAndHalfUnits;
-    position: relative;
-    align-items: center;
-    border-color: #dadada;
-    border-width: 1px;
-    justify-content: flex-start;
-  }
-  .new-scan-icon16 {
-    fill: rgba(141, 157, 181, 0.46);
-    width: 84px;
-    height: 124px;
-  }
-  .new-scan-text4 {
-    font-size: 22px;
-    font-style: normal;
-    font-family: Open Sans;
-    font-weight: 600;
-  }
-  .new-scan-container7 {
-    gap: OneAndHalfUnits;
-    position: relative;
-    align-items: center;
-    border-color: #dadada;
-    border-width: 1px;
-    justify-content: flex-start;
-  }
-  .new-scan-icon18 {
-    fill: rgba(141, 157, 181, 0.46);
-    width: 84px;
-    height: 124px;
-  }
-  .new-scan-text5 {
-    font-size: 22px;
-    font-style: normal;
-    font-family: Open Sans;
-    font-weight: 600;
-  }
-  .new-scan-container8 {
-    gap: OneAndHalfUnits;
-    position: relative;
-    align-items: center;
-    border-color: #dadada;
-    border-width: 1px;
-    justify-content: flex-start;
-  }
-  .new-scan-icon20 {
-    fill: rgba(141, 157, 181, 0.46);
-    width: 84px;
-    height: 124px;
-  }
-  .new-scan-text6 {
-    font-size: 22px;
-    font-style: normal;
-    font-family: Open Sans;
-    font-weight: 600;
-  }
+.new-scan-container {
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--dl-color-gray-white);
 }
+.new-scan-header {
+  width: auto;
+  max-width: auto;
+  min-width: 100%;
+}
+.new-scan-text {
+  top: 150px;
+  left: 580px;
+  position: static;
+  font-size: 30px;
+  align-self: center;
+  margin-top: var(--dl-space-space-oneandhalfunits);
+  font-family: Arial;
+  margin-bottom: var(--dl-space-space-oneandhalfunits);
+  letter-spacing: inherit;
+}
+.new-scan-container2 {
+  width: 764px;
+  height: 510px;
+  max-width: 100%;
+  min-width: 50%;
+  align-self: center;
+  align-items: center;
+  margin-right: 0px;
+  justify-content: center;
+}
+.new-scan-container3 {
+  gap: OneAndHalfUnits;
+  position: relative;
+  align-items: center;
+  border-color: #dadada;
+  border-width: 1px;
+  justify-content: flex-start;
+}
+.new-scan-icon10 {
+  top: 1px;
+  left: 0px;
+  right: 0px;
+  width: 66px;
+  height: 124px;
+  margin: auto;
+  position: absolute;
+}
+.new-scan-text1 {
+  top: 126px;
+  left: 76px;
+  position: absolute;
+  font-size: 25px;
+  font-style: normal;
+  font-family: Open Sans;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.new-scan-container4 {
+  gap: OneAndHalfUnits;
+  position: relative;
+  align-items: center;
+  border-color: #dadada;
+  border-width: 1px;
+  justify-content: flex-start;
+}
+.new-scan-icon12 {
+  fill: rgba(141, 157, 181, 0.46);
+  width: 84px;
+  height: 124px;
+}
+.new-scan-text2 {
+  font-size: 23px;
+  font-style: normal;
+  font-family: Open Sans;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.new-scan-container5 {
+  gap: OneAndHalfUnits;
+  position: relative;
+  align-items: center;
+  border-color: #dadada;
+  border-width: 1px;
+  justify-content: flex-start;
+}
+.new-scan-icon14 {
+  fill: rgba(141, 157, 181, 0.46);
+  width: 84px;
+  height: 124px;
+}
+.new-scan-text3 {
+  font-size: 25px;
+  font-style: normal;
+  font-family: Open Sans;
+  font-weight: 600;
+}
+.new-scan-container6 {
+  gap: OneAndHalfUnits;
+  position: relative;
+  align-items: center;
+  border-color: #dadada;
+  border-width: 1px;
+  justify-content: flex-start;
+}
+.new-scan-icon16 {
+  fill: rgba(141, 157, 181, 0.46);
+  width: 84px;
+  height: 124px;
+}
+.new-scan-text4 {
+  font-size: 22px;
+  font-style: normal;
+  font-family: Open Sans;
+  font-weight: 600;
+}
+.new-scan-container7 {
+  gap: OneAndHalfUnits;
+  position: relative;
+  align-items: center;
+  border-color: #dadada;
+  border-width: 1px;
+  justify-content: flex-start;
+}
+.new-scan-icon18 {
+  fill: rgba(141, 157, 181, 0.46);
+  width: 84px;
+  height: 124px;
+}
+.new-scan-text5 {
+  font-size: 22px;
+  font-style: normal;
+  font-family: Open Sans;
+  font-weight: 600;
+}
+.new-scan-container8 {
+  gap: OneAndHalfUnits;
+  position: relative;
+  align-items: center;
+  border-color: #dadada;
+  border-width: 1px;
+  justify-content: flex-start;
+}
+.new-scan-icon20 {
+  fill: rgba(141, 157, 181, 0.46);
+  width: 84px;
+  height: 124px;
+}
+.new-scan-text6 {
+  font-size: 22px;
+  font-style: normal;
+  font-family: Open Sans;
+  font-weight: 600;
+}
+
+/* @media(max-width: 1601px) {
+  
+} */
 @media(max-width: 767px) {
   .new-scan-header {
     padding-left: var(--dl-space-space-twounits);

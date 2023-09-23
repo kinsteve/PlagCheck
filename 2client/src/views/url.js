@@ -10,33 +10,49 @@ const Url = (props) => {
   const [url, setUrl] = useState('');
   const [submittedUrl, setSubmittedUrl] = useState('');
   const [access_token , setAccess_token] = useState('');
+  const [scanStatus, setScanStatus] = useState('');
+  const [isLoading , setisLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [scanId , setScanId] = useState('');
   
-const ngrokURL = "https://e256-2405-201-6810-891b-6daf-74c-499f-4cb7.ngrok-free.app";
+const ngrokURL = "https://6576-2401-4900-1f3b-707e-132-146-45d9-dff2.ngrok-free.app";
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (url.trim() !== '') {
+    if (isValidURL(url)) {
       setSubmittedUrl(url);
       setUrl('');
+      setErrorMessage('');
+    } else {
+      setErrorMessage('Invalid URL format. Please enter a valid URL.👎');
     }
+    setScanStatus('');
   };
-  
-  const handleScan=async()=>{
-    
-  }
+
+  const isValidURL = (url) => {
+    const urlPattern =  /^(https?:\/\/[\w.-]{1,256}\.[a-zA-Z]{2,})/;
+    return urlPattern.test(url);
+  };
   
   const handleURLscan=async()=>{
     try {
+      setisLoading(true);
       console.log(access_token);
-      const scanId = uuidv4();
+      const id= uuidv4()
+      setScanId(id);
       // const URL=`http://localhost:5000/api/v1/scan/url/` + scanId;
-      const URL=`${ngrokURL}/api/v1/scan/url/` + scanId;
+      console.log(id);
+      const URL=`${ngrokURL}/api/v1/scan/url/` + id;
       const body={
         url : submittedUrl,
         properties: {
           sandbox: true,
+          pdf:{
+             create:true,
+             title: 'ScanReport'
+          },
           webhooks:{
-              status:`${ngrokURL}/copyleaks/{STATUS}/${scanId}`
+              status:`${ngrokURL}/copyleaks/{STATUS}/${id}`
               // status:`http://localhost:5000/copyleaks/status/${scanId}`
             }
           }
@@ -52,6 +68,29 @@ const ngrokURL = "https://e256-2405-201-6810-891b-6daf-74c-499f-4cb7.ngrok-free.
       }
     }
     
+    const generatePdfReport=async()=>{
+        try {
+          const exportId = uuidv4();
+          const body = {
+            pdfReport: {
+              verb: 'POST',
+               headers: [['Authorization', `Bearer ${access_token}`]],
+              endpoint: `${ngrokURL}/api/v1/export/export-id/pdf-report`, // Replace with actual endpoint
+            },
+            completionWebhook: `${ngrokURL}/api/v1/export/export-id/completed`, // Replace with actual endpoint
+            maxRetries: 1,
+          }
+          const headers={
+            'Content-Type': 'application/json', 
+            'Authorization': `Bearer ${access_token}`,
+          }
+          const response = await axios.post(`${ngrokURL}/api/v1/export/${scanId}/${exportId}`,body,{headers});
+           console.log(response);
+        } catch (error) {
+           console.log("Problem in pdf frontend:",error)
+        }
+    }
+
     useEffect(() => {
       
       (async()=>{
@@ -63,15 +102,20 @@ const ngrokURL = "https://e256-2405-201-6810-891b-6daf-74c-499f-4cb7.ngrok-free.
             key:   process.env.REACT_APP_COPYLEAK_API_KEY 
           })
           setAccess_token(data);
+
         } catch (error) {
           console.log(error.message);
         }
       })();
       
-      // Establish a Socket.IO connection
+      //Establish a Socket.IO connection
       const socket = io("http://localhost:5000");
       socket.on('scanResult', (data) => {
         console.log('Received scan result:', data.scanResult);
+        setScanStatus(data.status)
+        setisLoading(false);
+        if(data.status==='error')
+           setErrorMessage("URL doesn't exit . Try Again🥲")
         // setScanResult(data.scanResult); // Update the state with the scan result
       });
   
@@ -85,8 +129,8 @@ const ngrokURL = "https://e256-2405-201-6810-891b-6daf-74c-499f-4cb7.ngrok-free.
         return (
     <div className="url-container">
       <Helmet>
-        <title>url - Shallow Frequent Swan</title>
-        <meta property="og:title" content="url - Shallow Frequent Swan" />
+        <title>PlagCheck_URL_Scan</title>
+        <meta property="og:title" content="PlagCheck_URL_Scan" />
       </Helmet>
       <Header />
       <div className='container2'>
@@ -115,18 +159,34 @@ const ngrokURL = "https://e256-2405-201-6810-891b-6daf-74c-499f-4cb7.ngrok-free.
           {submittedUrl && (
             <div className="url-scanner__submitted-url">
               <i className="url-scanner__submitted-url-icon fas fa-link"></i>
-              <span>{submittedUrl}</span>
+              <span>
+                {submittedUrl.length > 50
+                  ? submittedUrl.slice(0, 50) + "..."
+                  : submittedUrl}
+              </span>
             </div>
           )}
           <button
           type="button"
           className='btn'
           onClick={handleURLscan}
+          disabled={submittedUrl==='' || scanStatus==='completed' }
           >
-          SCAN
+          {isLoading ? <div className="loader" /> : 'Scan'}
           </button>
+          {scanStatus === 'completed' && (
+            <div>
+              <button
+                type="button"
+                className='pdfGenBtn'
+                onClick={generatePdfReport}
+              >
+                Generate PDF Report
+              </button>
+            </div>
+          )}
+           {errorMessage && <p className="url-scanner__error">{errorMessage}</p>}
         </div>
-        
       </div>
     </div>
   )
