@@ -15,7 +15,7 @@ const Url = (props) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [scanId , setScanId] = useState('');
   
-const ngrokURL = "https://6576-2401-4900-1f3b-707e-132-146-45d9-dff2.ngrok-free.app";
+const ngrokURL = "https://ed5e-2409-40d2-3-cf96-5a6-9a74-a160-e09.ngrok-free.app";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -78,7 +78,7 @@ const ngrokURL = "https://6576-2401-4900-1f3b-707e-132-146-45d9-dff2.ngrok-free.
               endpoint: `${ngrokURL}/api/v1/export/export-id/pdf-report`, // Replace with actual endpoint
             },
             completionWebhook: `${ngrokURL}/api/v1/export/export-id/completed`, // Replace with actual endpoint
-            maxRetries: 1,
+            maxRetries: 3,
           }
           const headers={
             'Content-Type': 'application/json', 
