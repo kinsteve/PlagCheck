@@ -10,7 +10,7 @@ const upload = multer({ storage });
 
 
 
-const pdfReportDirectory = 'C:/Users/Dell/Nodejs Dev/PlagCheck/pdf-reports';
+const pdfReportDirectory = 'C:/Users/Dell/Nodejs Dev/PlagCheck/api/pdf-reports';
 
 if (!fs.existsSync(pdfReportDirectory)) {
   fs.mkdirSync(pdfReportDirectory);
