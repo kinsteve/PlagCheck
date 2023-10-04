@@ -9,6 +9,7 @@ const upload = multer({ storage });
 
 
 
+
 const pdfReportDirectory = 'C:/Users/Dell/Nodejs Dev/PlagCheck/pdf-reports';
 
 if (!fs.existsSync(pdfReportDirectory)) {
@@ -20,17 +21,19 @@ const router = express.Router();
 
 router.post('/:scanId/:exportId', async (req, res) => {
   try {
+    // console.log("Hello HI called again");
     const body = req.body;
     const scanId = req.params["scanId"];
     const exportId = req.params["exportId"];
+    console.log(exportId);
     const exportUrl = `https://api.copyleaks.com/v3/downloads/${scanId}/export/${exportId}`;
-    // console.log("authorization is:" , req.headers['authorization']);
+     console.log("authorization is:" , req.headers['authorization']);
     console.log('Request Headers:', req.headers);
-    console.log("CompletionWebhook" , body.completionWebhook)
+    // console.log("CompletionWebhook" , body)
     const response=await axios.post(exportUrl, body, {
       headers: {
         'Content-Type': req.headers['content-type'],
-        'Authorization': req.headers['authorization'],
+        'Authorization':req.headers['authorization'],
       },
     })
     
@@ -57,12 +60,12 @@ router.post('/:export-id/completed', (req, res) => {
     if (status) {
       console.log(`Export completed for export ID: ${exportId}`);
       if (body.tasks[0].isHealthy)
-        res.json(204).send("PDF report Generated Succesfully")
+        res.status(204).send("PDF report Generated Succesfully")
       else
-        res.json(400).send("scan was completed with internal errors")
+        res.status(400).send("scan was completed with internal errors")
     }
     else {
-      res.json(501).send(`Export failed for export ID : ${exportId}`)
+      res.status(501).send(`Export failed for export ID : ${exportId}`)
     }
   } catch (error) {
     console.log("Error in completed webhook", error);
