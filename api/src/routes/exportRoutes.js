@@ -28,7 +28,7 @@ router.post('/:scanId/:exportId', async (req, res) => {
     console.log(exportId);
     const exportUrl = `https://api.copyleaks.com/v3/downloads/${scanId}/export/${exportId}`;
      console.log("authorization is:" , req.headers['authorization']);
-    console.log('Request Headers:', req.headers);
+    // console.log('Request Headers:', req.headers);
     // console.log("CompletionWebhook" , body)
     const response=await axios.post(exportUrl, body, {
       headers: {
@@ -36,7 +36,7 @@ router.post('/:scanId/:exportId', async (req, res) => {
         'Authorization':req.headers['authorization'],
       },
     })
-    
+      console.log(response.data);
       res.status(200).send(response.data);
  
 
